@@ -5,9 +5,11 @@ import Balance from "./Components/Balance";
 import IncomeExpense from "./Components/IncomeExpense";
 import AddTransictions from "./Components/AddTransictions";
 import TransactionList from "./Components/TransactionList";
+import {GlobalProvider} from './Context/GlobalState';
 
 const useStyle = makeStyles((theme) => ({
-  root: {marginTop: "5rem",
+  root: {
+    marginTop: "5rem",
     [theme.breakpoints.up("sm")]: {
       width: "50%",
       margin: "auto",
@@ -24,10 +26,14 @@ function App() {
     <Container>
       <AppBars />
       <Box className={classes.root}>
-        <Balance />
-        <IncomeExpense />
-        <TransactionList />
-        <AddTransictions />
+        <GlobalProvider>
+          <Balance />
+          <IncomeExpense />
+          <TransactionList />
+          <AddTransictions />
+
+        </GlobalProvider>
+
       </Box>
     </Container>
   );

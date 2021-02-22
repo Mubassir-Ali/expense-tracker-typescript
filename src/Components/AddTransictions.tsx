@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState,useContext} from "react";
+import {GlobalContext} from './../Context/GlobalState';
 import {
   makeStyles,
   TextField,
@@ -33,13 +34,32 @@ const useStyle = makeStyles((theme) => ({
 
 const AddTransictions = () => {
   const classes = useStyle();
+  const [text, setText] = useState('');
+  const [amount, setAmount] = useState(0);
+
+  const {addTransaction}=useContext(GlobalContext);
+
+  const onSubmit = (e:any) => {
+    e.preventDefault();
+
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      text,
+      amount: +amount
+    }
+
+    addTransaction(newTransaction)    
+}
+
   return (
     <div className={classes.text}>
-      <form>
+      <form onSubmit={onSubmit}>
         <Typography>Add Transaction</Typography>
         <div className={classes.my}>
           <TextField
             type="text"
+            value={text}
+            onChange={(e)=>setText(e.target.value)}
             label="Description"
             variant="outlined"
             fullWidth
@@ -50,6 +70,8 @@ const AddTransictions = () => {
           <TextField
             type="number"
             label="Amount"
+            value={amount}
+            onChange={(e:any)=>setAmount(e.target.value)}
             variant="outlined"
             fullWidth
             required

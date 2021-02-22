@@ -1,5 +1,7 @@
-import React from "react";
+import React,{useContext,useEffect,useState} from "react";
 import { Box, Avatar, Grid } from "@material-ui/core";
+import {GlobalContext} from './../Context/GlobalState';
+import {transactionType} from './../Types/Types';
 import {
     Typography,
     makeStyles,
@@ -28,8 +30,21 @@ const useStyle = makeStyles((theme) => ({
 const Balance = () => {
     const classes = useStyle();
 
-    let date = new Date().toLocaleDateString();
-    console.log(date);
+    const {transactions} =useContext(GlobalContext)
+    const [balance, setBalance] = useState(0)
+
+    const amounts =transactions.map((transaction:transactionType)=>transaction.amount)
+    const total=amounts.reduce((acc:any,item:any)=>(acc +=item), 0).toFixed(2)
+
+
+
+    useEffect(() => {
+        let sum = 0;
+        transactions.map((transaction:any)=>{
+            sum += transaction.amount
+            return setBalance(sum)
+        })
+    }, [transactions]);
 
     return (
         <div>
@@ -40,9 +55,9 @@ const Balance = () => {
                             <CardHeader className={classes.balTitle}
                                 avatar={<Avatar>$</Avatar>}
                                 title="Balance"
-                                subheader={date}
+                                
                             />
-                             <Typography variant="h6">{`$200`}</Typography>
+                             <Typography variant="h6">{balance<0? '-' : ''} ${Math.abs(balance).toFixed(2)}</Typography>
                         </CardActionArea>
                     
                     </Card>
