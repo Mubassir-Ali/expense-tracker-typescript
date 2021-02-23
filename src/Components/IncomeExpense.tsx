@@ -1,5 +1,5 @@
 import React,{useContext} from "react";
-import { Container, Box, Avatar, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import {GlobalContext} from './../Context/GlobalState';
 import {transactionType} from './../Types/Types';
 import {
@@ -27,13 +27,13 @@ const IncomeExpense = () => {
     const amounts =transactions.map((transaction:transactionType)=>transaction.amount)
 
     const income =amounts
-    .filter((item:any)=>item>0)
-    .reduce((acc:any,item:any)=>(acc +=item),0)
+    .filter((item:number)=>item>0)
+    .reduce((acc:number,item:number)=>(acc +=item),0)
     .toFixed(2);
 
    const expense=amounts
-   .filter((item:any)=>item<0)
-   .reduce((acc:any,item:any)=>(acc +=item),0)
+   .filter((item:number)=>item<0)
+   .reduce((acc:number,item:number)=>(acc +=item),0)
    .toFixed(2);
     
   return <Grid container spacing={1}>

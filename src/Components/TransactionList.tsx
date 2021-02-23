@@ -1,6 +1,7 @@
 import React,{useContext} from "react";
 import {List} from "@material-ui/core";
 import {Typography,Grid, makeStyles} from "@material-ui/core";
+import {transactionType} from './../Types/Types';
 
 import {Transictions} from './Transictions';
 import {GlobalContext} from './../Context/GlobalState';
@@ -30,7 +31,7 @@ const TransactionList = () => {
       <Grid item xs={12} sm={12} md={12}>
         <List>      
          {
-            transactions.map((transaction:any)=>(<Transictions  key={transaction.id} transaction={transaction} />))
+            transactions.map((transaction:transactionType)=>(<Transictions  key={transaction.id} transaction={transaction} />))
          }
         </List>
       </Grid>

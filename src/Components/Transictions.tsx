@@ -1,7 +1,7 @@
 import React,{useContext} from 'react'
 import {GlobalContext} from './../Context/GlobalState';
 import {transactionType} from './../Types/Types';
-import {ListItem,IconButton,Card,makeStyles,Typography} from '@material-ui/core';
+import {ListItem,IconButton,Card,makeStyles} from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 const useStyle = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyle = makeStyles((theme) => ({
   }));
 
 
-export const Transictions = ({transaction}:any) => {
+export const Transictions = ({transaction}:transactionType|any) => {
     const classes = useStyle();
     const {deleteTransaction}=useContext(GlobalContext);
     const sign =transaction.amount<0 ? '-':'+'

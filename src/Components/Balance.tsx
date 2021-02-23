@@ -1,5 +1,5 @@
 import React,{useContext,useEffect,useState} from "react";
-import { Box, Avatar, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import {GlobalContext} from './../Context/GlobalState';
 import {transactionType} from './../Types/Types';
 import {
@@ -38,13 +38,14 @@ const Balance = () => {
     const [balance, setBalance] = useState(0)
 
     const amounts =transactions.map((transaction:transactionType)=>transaction.amount)
-    const total=amounts.reduce((acc:any,item:any)=>(acc +=item), 0).toFixed(2)
+    const total=amounts.reduce((acc:number,item:number)=>(acc +=item), 0).toFixed(2)
+
 
 
 
     useEffect(() => {
         let sum = 0;
-        transactions.map((transaction:any)=>{
+        transactions.map((transaction:transactionType)=>{
             sum += transaction.amount
             return setBalance(sum)
         })

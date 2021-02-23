@@ -8,7 +8,7 @@ const initialState = {
 	transactions: [],
 }
 
-console.log(initialState);
+
 
 
 // Create context
