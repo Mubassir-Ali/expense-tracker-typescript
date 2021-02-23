@@ -15,13 +15,17 @@ const useStyle = makeStyles((theme) => ({
     root: {
         width: "50%",
         margin: "auto",
-        marginTop: "5rem",
+        paddingTop: "5rem",
     },
     bal:{
         display:"flex",
     },
     balTitle:{
         flexGrow:0.9
+    },
+    bg:{
+        backgroundColor:theme.palette.success.main,
+        color: theme.palette.text.secondary,
     }
 
    
@@ -50,14 +54,14 @@ const Balance = () => {
         <div>
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={12} md={12}>
-                    <Card>
+                    <Card className={classes.bg}>
                         <CardActionArea className={classes.bal}>
-                            <CardHeader className={classes.balTitle}
-                                avatar={<Avatar>$</Avatar>}
-                                title="Balance"
-                                
-                            />
-                             <Typography variant="h6">{balance<0? '-' : ''} ${Math.abs(balance).toFixed(2)}</Typography>
+                            <div className={classes.balTitle}>
+                            <Typography variant="button">Balance</Typography>
+                            </div>
+                            
+                           
+                             <Typography variant="button">{balance<0? '-' : ''} ${Math.abs(balance).toFixed(2)}</Typography>
                         </CardActionArea>
                     
                     </Card>

@@ -9,22 +9,26 @@ import {GlobalProvider} from './Context/GlobalState';
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    marginTop: "5rem",
+    paddingTop: "6rem",
+    color:theme.palette.text.secondary,
     [theme.breakpoints.up("sm")]: {
       width: "50%",
-      margin: "auto",
-      marginTop: "5rem",
+      margin: "auto",     
       height: "100vh",
       position: "relative",
     },
   },
+  bg:{
+    backgroundColor:theme.palette.grey[100],
+    
+  }
 }));
 
 function App() {
   const classes = useStyle();
   return (
-    <Container>
-      <AppBars />
+    <Container className={classes.bg}>
+      <AppBars  />
       <Box className={classes.root}>
         <GlobalProvider>
           <Balance />

@@ -13,10 +13,12 @@ import {
 
 const useStyle = makeStyles((theme) => ({
   income: {
-    color: theme.palette.success.main,
+    color: theme.palette.text.secondary,
+    backgroundColor:theme.palette.success.light
   },
   expense: {
-    color: theme.palette.warning.main,
+    color: theme.palette.text.secondary,
+    backgroundColor:theme.palette.info.light
   },
 }));
 const IncomeExpense = () => {
@@ -36,16 +38,16 @@ const IncomeExpense = () => {
     
   return <Grid container spacing={1}>
       <Grid item xs={12} sm={12} md={6}>
-            <Card>           
-              <CardContent>
-                <Typography variant="h6" className={classes.income}>+${income}</Typography>
+            <Card className={classes.income}>           
+              <CardContent >
+                <Typography variant="h6" >+${income}</Typography>
               </CardContent>
             </Card>
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
-            <Card>             
+            <Card className={classes.expense}>             
               <CardContent>
-                <Typography variant="h6" className={classes.expense}>-${Math.abs(expense)}</Typography>
+                <Typography variant="h6" >-${Math.abs(expense)}</Typography>
               </CardContent>
             </Card>
           </Grid>
