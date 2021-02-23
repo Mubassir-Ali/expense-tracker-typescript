@@ -24,8 +24,9 @@ const useStyle = makeStyles((theme) => ({
         flexGrow:0.9
     },
     bg:{
-        backgroundColor:theme.palette.success.main,
-        color: theme.palette.text.secondary,
+        backgroundColor:theme.palette.primary.light,
+        color: "white",
+        padding:5
     }
 
    
@@ -58,11 +59,11 @@ const Balance = () => {
                     <Card className={classes.bg}>
                         <CardActionArea className={classes.bal}>
                             <div className={classes.balTitle}>
-                            <Typography variant="button">Balance</Typography>
+                            <Typography variant="h6">Balance</Typography>
                             </div>
                             
                            
-                             <Typography variant="button">{balance<0? '-' : ''} ${Math.abs(balance).toFixed(2)}</Typography>
+                             <Typography variant="h6">{balance<0? '-' : ''} ${Math.abs(balance).toFixed(2)}</Typography>
                         </CardActionArea>
                     
                     </Card>
